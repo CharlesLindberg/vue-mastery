@@ -10,6 +10,15 @@ const inStock = ref(true);
 const inventory = ref(3);
 const onSale = ref(false);
 
+const details = ['50% cotton', '30% wool', '20% polyester'];
+
+const variants = [
+  { id: 2234, color: 'green' },
+  { id: 2235, color: 'blue' },
+];
+
+const sizes = ['S', 'M', 'L', 'XL'];
+
 const description = ref('A pair of warm, fuzzy socks');
 </script>
 
@@ -34,6 +43,18 @@ const description = ref('A pair of warm, fuzzy socks');
         <p v-else-if="inventory <= 19 && inventory > 0">Almost sold out</p>
         <p v-else>Out of Stock</p>
         <p v-if="onSale">On Sale</p>
+        <ul>
+          <li v-for="detail in details">{{ detail }}</li>
+        </ul>
+        <div
+          v-for="variant in variants"
+          :key="variant.id"
+        >
+          {{ variant.color }}
+        </div>
+        <ul>
+          <li v-for="size in sizes">{{ size }}</li>
+        </ul>
       </div>
     </div>
   </div>
